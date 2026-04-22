@@ -1,5 +1,7 @@
 # Sandbox-Loop
 
+* [Generate JSON Template](https://progressivepull.github.io/Sandbox-Loop/)
+
 # ✅ What this app does
 ## ✔ Asks user:
 “How many questions?”
