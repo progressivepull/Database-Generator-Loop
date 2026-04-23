@@ -13,6 +13,7 @@
     }
     textarea { width: 100%; height: 60px; }
     input[type="text"] { width: 100%; }
+    select { width: 100%; padding: 5px; }
   </style>
 </head>
 
@@ -67,6 +68,17 @@ function generateFields() {
 
             <label>Correct Answer (A–E):</label>
             <input type="text" id="ans_${i}">
+
+            <hr>
+
+            <label>Code (multi-line):</label>
+            <textarea id="code_${i}" style="height:120px;"></textarea>
+
+            <label>Language:</label>
+            <select id="lang_${i}">
+                <option value="python">python</option>
+                <option value="SQL">SQL</option>
+            </select>
         `;
 
         container.appendChild(block);
@@ -95,6 +107,13 @@ function generateJSON() {
     };
 
     for (let i = 1; i <= count; i++) {
+
+        // Convert code textarea into array of { line: "..." }
+        const codeText = document.getElementById(`code_${i}`).value;
+        const codeLines = codeText
+            .split("\n")
+            .map(l => ({ line: l }));
+
         template.questions.push({
             id: i,
             problem_description: [{ line: document.getElementById(`pd_${i}`).value }],
@@ -109,8 +128,8 @@ function generateJSON() {
             answer: document.getElementById(`ans_${i}`).value,
             resource: {
                 code: {
-                    lines: [{ line: "# First Line" }],
-                    language: ""
+                    lines: codeLines,
+                    language: document.getElementById(`lang_${i}`).value
                 }
             }
         });
