@@ -1,6 +1,6 @@
 # Database-Generator-Loop
 
-* [Generate JSON Application](https://progressivepull.github.io/Sandbox-Loop/)
+* [Generate JSON Application](https://progressivepull.github.io/DatabaseGeneratorLoop/)
 
 # ✅ What this app does
 ## ✔ Asks user:
